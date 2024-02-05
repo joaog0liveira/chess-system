@@ -36,11 +36,11 @@ public class UI {
     /*public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
-    }  /* esse clearScreen não tá funcionando */
+    }  /* esse aqui funciona no terminal do bash */
 
     public static void clearScreen() {
         for (int i = 0; i < 50; ++i) System.out.println();
-    }
+    } /* esse aqui vai ser pros testes do terminal do intellij */
 
     public static ChessPosition readChessPosition(Scanner ler) {
         try {
@@ -60,9 +60,15 @@ public class UI {
         printCapturedPieces(captured);
         System.out.println();
         System.out.println("Turn: " + chessMatch.getTurn());
-        System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
-        if (chessMatch.getCheck()) {
-            System.out.println("CHECK!");
+        if (!chessMatch.getCheckMate()) {
+            System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+            if (chessMatch.getCheck()) {
+                System.out.println("CHECK!");
+            }
+        }
+        else {
+            System.out.println("CHECKMATE!");
+            System.out.println("Winner: " + chessMatch.getCurrentPlayer());
         }
     }
 
